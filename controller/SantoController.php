@@ -34,6 +34,7 @@ class SantoController {
     }
 
     function addSaint() {
+        
         $nombre = $_POST['nombre'];
         $pais = $_POST['pais'];
         $fecha_nac = $_POST['fecha_nacimiento'];

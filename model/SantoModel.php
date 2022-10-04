@@ -21,8 +21,8 @@ class SantoModel {
     function insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion){
 
       $sentencia = $this->db->prepare("INSERT INTO santo(
-        nombre, pais, fecha_nacimiento, fecha_muerte, fecha_cononizacion, congregacion_fk) 
-        ");
+        nombre, pais, fecha_nacimiento, fecha_muerte, fecha_canonizacion, congregacion_fk) 
+        VALUES (?,?,?,?,?,?)");
       $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion));
       
     }
