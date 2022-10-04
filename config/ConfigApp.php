@@ -9,7 +9,8 @@ class configApp
     'home' => 'SantoController#home',
     'borrar' => 'SantoController#delete',
     'agregar' => 'SantoController#createSaint',
-    'new' => 'SantoController#addSaint'
+    'new' => 'SantoController#addSaint',
+    'congregaciones' => 'CongregacionController#listCongregations'
   ];
 }
 

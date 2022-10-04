@@ -16,6 +16,8 @@ class SantoView {
       
         echo '
         <div class="container py-4">
+        <h1 class="text-center py-4">Lista de santos</h1>
+        <hr class="border border-dark border-2 opacity-50">
             <form>
                 <table class="table table-hover">
                     <thead>
@@ -36,7 +38,7 @@ class SantoView {
                         <td>'.$santo['fecha_nacimiento'].'</td>
                         <td>'.$santo['fecha_muerte'].'</td>
                         <td>'.$santo['fecha_canonizacion'].'</td>
-                        <td>'.$santo['congregacion_fk'] .'</td>
+                        <td>'.$santo['congregacion_fk'].'</td>
                         <td><a href="borrar/'.$santo['id'].'">BORRAR</a></td>
                         </tr>';
                     }
@@ -45,7 +47,7 @@ class SantoView {
             </form>
             <div><a href=agregar>AGREGAR</a></div>
       </div>';
-      
+      //VER CÓMO ACCEDER AL NOMBRE DE LA CONGREGACIÓN
       htmlFooter();
 
     }
@@ -96,3 +98,5 @@ class SantoView {
         htmlFooter();
     }
 }
+
+?>
