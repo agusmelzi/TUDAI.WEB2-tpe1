@@ -29,23 +29,20 @@ class CongregacionController {
         //header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
     }
 
-    function addSaint() {
+    function addCongregation() {
         
         $nombre = $_POST['nombre'];
-        $pais = $_POST['pais'];
-        $fecha_nac = $_POST['fecha_nacimiento'];
-        $fecha_muerte = $_POST['fecha_muerte'];
-        $fecha_canon = $_POST['fecha_canonizacion'];
-        $congregacion = $_POST['congregacion_fk'];
+        $fundador = $_POST['fundador'];
+        $lema = $_POST['lema'];
 
-        $this->model->insertCongregacion($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
+        $this->model->insertCongregation($nombre, $fundador, $lema);
 
-        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
     }
 
     function delete($param) {
         $this->model->borrarCongregacion($param[0]);
-        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
     }
 
 }

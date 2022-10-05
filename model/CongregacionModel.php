@@ -18,7 +18,7 @@ class CongregacionModel {
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function insertCongregacion($nombre, $fundador, $lema){
+    function insertCongregation($nombre, $fundador, $lema){
       
         $sentencia = $this->db->prepare("INSERT INTO congregacion(
           nombre, fundador, lema) 
