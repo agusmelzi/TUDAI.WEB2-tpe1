@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'blosquesDeCodigo.php';
+require_once 'templates.php';
 
 
 class CongregacionView {
@@ -39,16 +39,15 @@ class CongregacionView {
                             <td>'.$congregacion['fundador'].'</td>
                             <td>'.$congregacion['lema'].'</td>
                             <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarCongregacion">
-                            Borrar
+                                <i class="fa-solid fa-trash"></i>
                             </button></td>
                             </tr>';
                         }
                     
-                    //<a href="borrarModal/'.$congregacion['id'].'">BORRAR</a>
                     echo '
                     <!-- Modal -->
                         <div class="modal fade" id="borrarCongregacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -76,7 +75,7 @@ class CongregacionView {
             </button>
 
                 <div class="modal fade" id="nuevaCongregacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -105,17 +104,10 @@ class CongregacionView {
                     </div>
                 </div>        
             </div>
-
-
-
       </div>';
       //VER CÓMO ACCEDER AL NOMBRE DE LA CONGREGACIÓN
       htmlFooter();
 
-    }
-
-    function borrarModal() {
-        
     }
 
 

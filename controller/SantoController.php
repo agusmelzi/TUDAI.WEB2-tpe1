@@ -30,6 +30,7 @@ class SantoController {
         //header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
     }
 
+    
     function addSaint() {
         
         $nombre = $_POST['nombre'];
@@ -38,8 +39,31 @@ class SantoController {
         $fecha_muerte = $_POST['fecha_muerte'];
         $fecha_canon = $_POST['fecha_canonizacion'];
         $congregacion = $_POST['congregacion_fk'];
-
+        
         $this->model->insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
+        
+        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+    }
+    
+    function editSaint($param) {
+
+        $congregaciones = $this->modelC->getCongregaciones();
+        $santo = $this->model->editarSantos($param[0]);
+        $this->view->editSaint($congregaciones, $santo);
+
+    }
+
+    function editarSanto() {
+        
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $pais = $_POST['pais'];
+        $fecha_nac = $_POST['fecha_nacimiento'];
+        $fecha_muerte = $_POST['fecha_muerte'];
+        $fecha_canon = $_POST['fecha_canonizacion'];
+        $congregacion = $_POST['congregacion_fk'];
+
+        $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
 
         header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
     }

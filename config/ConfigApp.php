@@ -10,6 +10,8 @@ class configApp
     'borrar' => 'SantoController#delete',
     'agregar' => 'SantoController#createSaint',
     'new' => 'SantoController#addSaint',
+    'edit' => 'SantoController#editSaint',
+    'update' => 'SantoController#editarSanto',
     'congregaciones' => 'CongregacionController#listCongregations',
     'agregarCongregacion' => 'CongregacionController#addCongregation',
     'borrarCongregacion' => 'CongregacionController#delete'
