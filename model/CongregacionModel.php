@@ -26,6 +26,25 @@ class CongregacionModel {
         $sentencia->execute(array($nombre, $fundador, $lema));
         
       }
+
+      function editarCongregacion($id){
+      
+        $sentencia = $this->db->prepare("select * from congregacion WHERE id=?");
+        $sentencia->execute(array($id));
+      
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function updateCongregation($id, $nombre, $fundador, $lema){
+
+      $sentencia = $this->db->prepare("UPDATE congregacion SET
+        nombre = ?,
+        fundador = ?,
+        lema = ?
+        WHERE id = ?");
+      $sentencia->execute(array($nombre, $fundador, $lema, $id));
+      
+    }
       
       function borrarCongregacion($id){
 

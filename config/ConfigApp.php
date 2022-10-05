@@ -14,6 +14,8 @@ class configApp
     'update' => 'SantoController#editarSanto',
     'congregaciones' => 'CongregacionController#listCongregations',
     'agregarCongregacion' => 'CongregacionController#addCongregation',
+    'editarCongregacion' => 'CongregacionController#editCongregation',
+    'updateCongregation' => 'CongregacionController#editarCongregacion',
     'borrarCongregacion' => 'CongregacionController#delete'
   ];
 }

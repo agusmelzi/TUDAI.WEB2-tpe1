@@ -22,12 +22,7 @@ class CongregacionController {
         $this->view->showList($congregaciones);
     }
 
-    function createSaint() {
-        //la idea es traer estos atributos desde un form
-        $congregaciones = $this->modelC->getCongregaciones();
-        $this->view->addNewCongregation($congregaciones);
-        //header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
-    }
+    
 
     function addCongregation() {
         
@@ -36,6 +31,25 @@ class CongregacionController {
         $lema = $_POST['lema'];
 
         $this->model->insertCongregation($nombre, $fundador, $lema);
+
+        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
+    }
+
+    function editCongregation($param) {
+
+        $congregacion = $this->model->editarCongregacion($param[0]);
+        $this->view->editCongregation($congregacion);
+
+    }
+
+    function editarCongregacion() {
+        
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $fundador = $_POST['fundador'];
+        $lema = $_POST['lema'];
+
+        $this->model->updateCongregation($id, $nombre, $fundador, $lema);
 
         header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
     }

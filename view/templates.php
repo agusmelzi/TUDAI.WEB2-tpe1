@@ -27,7 +27,7 @@ function htmlHead(){
                 <a class="nav-link active" aria-current="page" href="/tpe1/home">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="congregaciones">Congregaciones</a>
+                <a class="nav-link" href="/tpe1/congregaciones">Congregaciones</a>
                 </li>
             </ul>
             </div>
