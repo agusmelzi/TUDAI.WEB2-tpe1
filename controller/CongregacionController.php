@@ -8,7 +8,6 @@ class CongregacionController {
 
     private $view;
     private $model;
-    private $modelC;
 
 
     function __construct() {
@@ -16,13 +15,10 @@ class CongregacionController {
         $this->model = new CongregacionModel();
     }
 
-
     function listCongregations() {
         $congregaciones = $this->model->getCongregaciones();
         $this->view->showList($congregaciones);
     }
-
-    
 
     function addCongregation() {
         

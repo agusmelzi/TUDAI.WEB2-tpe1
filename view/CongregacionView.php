@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'templates.php';
+require_once('libs/Smarty.class.php');
 
 
 class CongregacionView {
@@ -12,7 +12,7 @@ class CongregacionView {
     }
 
     function showList($congregaciones){
-        htmlHead();
+        
       
         echo '
         <div class="container py-4">
@@ -115,12 +115,10 @@ class CongregacionView {
             </div>
       </div>';
       
-      htmlFooter();
 
     }
 
     function editCongregation($congregacion) {
-        htmlHead();
       
         echo '<div class="container py-4 px-5">
 
@@ -147,7 +145,6 @@ class CongregacionView {
 
         </div>';
                    
-        htmlFooter();
     }
 
     

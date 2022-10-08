@@ -7,6 +7,7 @@ class configApp
   public static $ACTIONS = [
     '' => 'SantoController#home',
     'home' => 'SantoController#home',
+    'santosXCategoria' => 'SantoController#santosXCategoria',
     'borrar' => 'SantoController#delete',
     'agregar' => 'SantoController#createSaint',
     'new' => 'SantoController#addSaint',
