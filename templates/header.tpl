@@ -32,3 +32,7 @@
             </div>
         </div>
     </nav>
+
+    <div class="container py-4">
+        <h1 class="text-center py-4">{$titulo}</h1>
+<hr class="border border-dark border-2 opacity-50">

@@ -1,22 +1,18 @@
 {include file="header.tpl"}
 
-<div class="container py-4">
-    <h1 class="text-center py-4">{$titulo}</h1>
-    <hr class="border border-dark border-2 opacity-50">
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">País</th>
-                <th scope="col">Fecha de nacimiento</th>
-                <th scope="col">Fecha de muerte</th>
-                <th scope="col">Fecha de canonización</th>
-                <th scope="col">Congregación</th>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach from=$santos item=santo}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">País</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Fecha de muerte</th>
+            <th scope="col">Fecha de canonización</th>
+            <th scope="col">Congregación</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach from=$santos item=santo}
             <tr>
                 <td>{$santo['nombre']}</td>
                 <td>{$santo['pais']}</td>
@@ -25,40 +21,42 @@
                 <td>{$santo['fecha_canonizacion']}</td>
                 <td>{$santo['congregacion_fk']}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#borrarCongregacion">
-                        <a href="edit/{$santo['id']}">
+                    <a href="edit/{$santo['id']}">
+                        <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                            data-bs-target="#borrarCongregacion">
                             <i class="fa-regular fa-pen-to-square"></i>
-                        </a>
-                    </button>
+                        </button>
+                    </a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#borrarCongregacion">
-                        <a href="borrar/{$santo['id']}">
+                    <a href="borrar/{$santo['id']}">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#borrarCongregacion">
                             <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </button>
+                        </button>
+                    </a>
                 </td>
             </tr>
-            {/foreach}
-            </tbody>
-    </table>
-    <div class="text-center">
-        <button type="button" class="btn btn-danger">
-            <a href="/tpe1/agregar"> <!--cambio acá-->
-                AGREGAR <i class="fa-solid fa-user-plus"></i>
-            </a>
+        {/foreach}
+    </tbody>
+</table>
+<div class="text-center">
+    <a href="/tpe1/agregar">
+        <button type="button" class="btn btn-danger btn-lg">
+            AGREGAR <i class="fa-solid fa-person-praying"></i>
         </button>
-    </div>
+    </a>
+</div>
 
-    <form action="/tpe1/santosXCategoria" method="post">
-        <div class="mb-3">
-            <label for="inputCategoria" class="form-label">Buscar santo por congregacion</label>
-            <input type="number" class="form-control" id="inputCategoria" name="categoria">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+<form action="/tpe1/santosXCategoria" method="post">
+    <div class="mb-3">
+        <label for="inputCategoria" class="form-label">Buscar santo por congregacion</label>
+        <input type="number" class="form-control" id="inputCategoria" name="categoria">
+        <div class="py-3">
+        <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
-    </form>
+    </div>
+</form>
 </div>
 
 {include file="footer.tpl"}
