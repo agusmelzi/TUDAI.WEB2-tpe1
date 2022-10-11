@@ -19,10 +19,23 @@ class LoginController
         $this->view->loginHome();
     }
 
+    function formularioRegistro()
+    {
+        $this->view->newUser();
+    }
+    
+
     function registrarUser() 
     {
         $nombre = $_POST['nombre'];
         $pass = $_POST['pass'];
+
+        $list = $this->model->showUsers();
+        foreach ($list as $user) {
+            if (strcmp($nombre,$user['nombre']) == 0) {
+                 return $this->view->newUser("El usuario ingresado ya existe. Por favor, ingrese un nombre de usuario distinto");
+            }
+        }
 
         $hash = password_hash($pass, PASSWORD_DEFAULT);
 

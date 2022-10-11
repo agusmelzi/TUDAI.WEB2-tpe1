@@ -20,7 +20,8 @@ class configApp
     'borrarCongregacion' => 'CongregacionController#delete',
     'login' => 'LoginController#login',
     'verificarLogin' => 'LoginController#verificarLogin',
-    'registrarse' => 'LoginController#registrarUser'
+    'registrarse' => 'LoginController#registrarUser',
+    'nuevoUsuario' => 'LoginController#formularioRegistro'
   ];
 }
 

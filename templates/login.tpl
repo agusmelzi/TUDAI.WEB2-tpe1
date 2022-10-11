@@ -34,43 +34,13 @@
                     </form>
                 </div>
                 <div class="text-center pb-3">
-                    <a href="/tpe1/registrarse" data-bs-toggle="modal" data-bs-target="#registroModal">
+                    <a href="/tpe1/nuevoUsuario">
                         Registrarse
                     </a>
                 </div>
             </div>
         </div>
 
-    </div>
-    <div class="container">
-
-        <!-- Modal -->
-        <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="registrarse" method="post">
-                            <div class="mb-3">
-                                <label for="InputEmail1" class="form-label">Nombre de usuario</label>
-                                <input type="text" class="form-control" name="nombre" id="InputEmail1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="pass" id="exampleInputPassword1">
-                            </div>
-                            <div class="text-center py-3">
-                                <button type="submit" class="btn btn-primary">REGISTRARSE</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 
 {include file="footer.tpl"}

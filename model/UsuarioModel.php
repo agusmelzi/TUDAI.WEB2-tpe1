@@ -17,9 +17,9 @@ class UsuarioModel
 
     function showUsers()
     {
-        $sentencia = $this->db->prepare("select * from usuario");
+        $sentencia = $this->db->prepare("select nombre from usuario");
         $sentencia->execute();
-        return $sentencia->fetch(PDO::FETCH_ASSOC);
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function insertUser($nombre, $pass)

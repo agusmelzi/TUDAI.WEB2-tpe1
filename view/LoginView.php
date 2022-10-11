@@ -18,6 +18,13 @@ class LoginView
         $this->smarty->assign('message', $message);
         $this->smarty->display('templates/login.tpl');
     }
+
+    function newUser($message = '') 
+    {
+        $this->smarty->assign('titulo', "Registrar usuario");
+        $this->smarty->assign('message', $message);
+        $this->smarty->display('templates/registrarUser.tpl');
+    }
 }
 
 
