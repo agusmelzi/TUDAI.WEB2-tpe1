@@ -15,6 +15,8 @@ class CongregacionView {
         
         $smarty = new Smarty();
         $smarty->assign('titulo', "Lista de congregaciones");
+        $smarty->assign('tituloNew', "Nueva congregación");
+        $smarty->assign('borrarCongregacion', "Borrar congregación");
         $smarty->assign('congregaciones', $congregaciones);
         $smarty->display('templates/listaCongregaciones.tpl');
 

@@ -7,6 +7,7 @@ ini_set('display_errors', '1');
 require_once 'config/ConfigApp.php';
 require_once 'controller/SantoController.php';
 require_once 'controller/CongregacionController.php';
+require_once 'controller/LoginController.php';
 
 function parseURL($url) {
   $urlExploded = explode('/', $url);

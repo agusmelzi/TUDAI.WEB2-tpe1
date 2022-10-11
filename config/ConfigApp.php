@@ -17,7 +17,10 @@ class configApp
     'agregarCongregacion' => 'CongregacionController#addCongregation',
     'editarCongregacion' => 'CongregacionController#editCongregation',
     'updateCongregation' => 'CongregacionController#editarCongregacion',
-    'borrarCongregacion' => 'CongregacionController#delete'
+    'borrarCongregacion' => 'CongregacionController#delete',
+    'login' => 'LoginController#login',
+    'verificarLogin' => 'LoginController#verificarLogin',
+    'registrarse' => 'LoginController#registrarUser'
   ];
 }
 
