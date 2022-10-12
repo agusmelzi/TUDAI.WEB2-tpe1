@@ -8,6 +8,7 @@ require_once 'config/ConfigApp.php';
 require_once 'controller/SantoController.php';
 require_once 'controller/CongregacionController.php';
 require_once 'controller/LoginController.php';
+require_once 'controller/SecuredController.php';
 
 function parseURL($url) {
   $urlExploded = explode('/', $url);

@@ -3,8 +3,9 @@
 require_once "./view/SantoView.php";
 require_once "./model/SantoModel.php";
 require_once "./model/CongregacionModel.php";
+require_once "SecuredController.php";
 
-class SantoController
+class SantoController extends SecuredController
 {
 
     private $view;
@@ -14,6 +15,8 @@ class SantoController
 
     function __construct()
     {
+        parent::__construct();
+
         $this->view = new SantoView();
         $this->model = new SantoModel();
         $this->modelC = new CongregacionModel();
@@ -22,6 +25,7 @@ class SantoController
 
     function home()
     {
+
         $santos = $this->model->getSantos();
         $this->view->showList($santos);
     }
@@ -45,10 +49,9 @@ class SantoController
 
     function createSaint()
     {
-        //la idea es traer estos atributos desde un form
         $congregaciones = $this->modelC->getCongregaciones();
         $this->view->addNewSaint($congregaciones);
-        //header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+
     }
 
 
@@ -64,7 +67,7 @@ class SantoController
 
         $this->model->insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
 
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+        header(HOME);
     }
 
     function editSaint($param)
@@ -88,12 +91,12 @@ class SantoController
 
         $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
 
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+        header(HOME);
     }
 
     function delete($param)
     {
         $this->model->borrarSanto($param[0]);
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+        header(HOME);
     }
 }

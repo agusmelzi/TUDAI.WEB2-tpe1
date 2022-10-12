@@ -3,7 +3,7 @@
 require_once 'view/LoginView.php';
 require_once 'model/UsuarioModel.php';
 
-class LoginController
+class LoginController 
 {
     private $view;
     private $model;
@@ -17,6 +17,13 @@ class LoginController
     function login()
     {
         $this->view->loginHome();
+    }
+
+    function logout()
+    {
+        session_start();
+        session_destroy();
+        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/login');
     }
 
     function formularioRegistro()
@@ -52,12 +59,15 @@ class LoginController
 
         $dbUser = $this->model->getUser($user);
 
-        if (isset($dbUser)) {
-            if (password_verify($pass, $dbUser['pass'])) { //(lo que ingreso, lo que traigo de la db)
+        if (isset($dbUser['nombre']) && password_verify($pass, $dbUser['pass'])) {
+            //password_verify($pass, $dbUser['pass'] (lo que ingreso, lo que traigo de la db)
+
+                session_start();
+                $_SESSION['nombre'] = $user;
+
                 header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
-            }
         } else {
-            $this->view->loginHome("Contraseña incorrecta");
+            $this->view->loginHome("Usuario o contraseña incorrecta");
         }
     }
 }

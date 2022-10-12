@@ -3,14 +3,17 @@
 require_once "./view/CongregacionView.php";
 require_once "./model/SantoModel.php";
 require_once "./model/CongregacionModel.php";
+require_once "SecuredController.php";
 
-class CongregacionController {
+class CongregacionController extends SecuredController {
 
     private $view;
     private $model;
 
 
     function __construct() {
+        parent::__construct();
+
         $this->view = new CongregacionView();
         $this->model = new CongregacionModel();
     }
@@ -28,7 +31,7 @@ class CongregacionController {
 
         $this->model->insertCongregation($nombre, $fundador, $lema);
 
-        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
+        header(CONGREGACIONES);
     }
 
     function editCongregation($param) {
@@ -47,12 +50,12 @@ class CongregacionController {
 
         $this->model->updateCongregation($id, $nombre, $fundador, $lema);
 
-        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
+        header(CONGREGACIONES);
     }
 
     function delete($param) {
         $this->model->borrarCongregacion($param[0]);
-        header("Location: http://".$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
+        header(CONGREGACIONES);
     }
 
 }

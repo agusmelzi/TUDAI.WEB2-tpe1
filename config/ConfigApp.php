@@ -1,5 +1,10 @@
 <?php 
 
+define('HOME', "Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+define('LOGIN', "Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/login');
+define('LOGOUT', "Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/logout');
+define('CONGREGACIONES', "Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/congregaciones');
+
 class configApp
 {
   public static $ACTION = 'action';
@@ -19,6 +24,7 @@ class configApp
     'updateCongregation' => 'CongregacionController#editarCongregacion',
     'borrarCongregacion' => 'CongregacionController#delete',
     'login' => 'LoginController#login',
+    'logout' => 'LoginController#logout',
     'verificarLogin' => 'LoginController#verificarLogin',
     'registrarse' => 'LoginController#registrarUser',
     'nuevoUsuario' => 'LoginController#formularioRegistro'
