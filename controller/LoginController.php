@@ -63,9 +63,14 @@ class LoginController
             //password_verify($pass, $dbUser['pass'] (lo que ingreso, lo que traigo de la db)
 
                 session_start();
-                $_SESSION['nombre'] = $user;
+                //acá van los cambios
+                if ($dbUser['nombre'] == 'Admin') {
+                    $_SESSION['nombre'] = 1;
+                } else {
+                    $_SESSION['nombre'] = 2;
+                }
 
-                header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
+                header(HOME);
         } else {
             $this->view->loginHome("Usuario o contraseña incorrecta");
         }

@@ -18,6 +18,14 @@ class CongregacionModel {
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function getCongregacion($id){
+      
+      $sentencia = $this->db->prepare("select nombre from congregacion WHERE id=?");
+      $sentencia->execute(array($id));
+    
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
+  }
+
     function insertCongregation($nombre, $fundador, $lema){
       
         $sentencia = $this->db->prepare("INSERT INTO congregacion(

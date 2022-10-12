@@ -22,7 +22,17 @@ class SantoModel
     $sentencia->execute();
 
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  } 
+
+  function getSanto($id)
+  {
+
+    $sentencia = $this->db->prepare("select * from santo WHERE id=?");
+    $sentencia->execute(array($id));
+
+    return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
+
 
   function getSantosXCategoria($categoria)
   {

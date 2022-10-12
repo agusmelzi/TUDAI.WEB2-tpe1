@@ -25,25 +25,30 @@ class SantoController extends SecuredController
 
     function home()
     {
-
         $santos = $this->model->getSantos();
-        $this->view->showList($santos);
+        $congregaciones = $this->modelC->getCongregaciones();
+        $this->view->showList($santos, $congregaciones);
     }
+
+    function detalle($param)
+    {
+        $santo = $this->model->getSanto($param[0]);
+        $congregacion = $this->modelC->getCongregacion($santo['congregacion_fk']);
+        $this->view->detalleSanto($santo, $congregacion);
+    }
+
 
     function santosXCategoria()
     {
-        $categoria = $_POST['categoria'];
-        if (empty($categoria)) {
-            $santos = $this->model->getSantos();
-            $this->view->showList($santos);
+        $categoria = $_POST['congregacion_fk'];
+        $congregaciones = $this->modelC->getCongregaciones();
+
+        $santos = $this->model->getSantosXCategoria($categoria);
+        if ($santos == null) {
+            //$santos = $this->model->getSantos();
+            $this->view->showList($santos, $congregaciones , 'No hay santos de esta congregación');
         } else {
-            $santos = $this->model->getSantosXCategoria($categoria);
-            if ($santos == null) {
-                $santos = $this->model->getSantos();
-                $this->view->showList($santos);
-            } else {
-                $this->view->showList($santos);
-            }
+            $this->view->showList($santos, $congregaciones);
         }
     }
 
@@ -51,7 +56,6 @@ class SantoController extends SecuredController
     {
         $congregaciones = $this->modelC->getCongregaciones();
         $this->view->addNewSaint($congregaciones);
-
     }
 
 

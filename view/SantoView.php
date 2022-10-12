@@ -12,13 +12,24 @@ class SantoView
     {
     }
 
-    function showList($santos)
+    function showList($santos, $congregaciones, $message = '')
     {
-
         $smarty = new Smarty();
         $smarty->assign('titulo', "Lista de santos");
         $smarty->assign('santos', $santos);
+        $smarty->assign('congregaciones', $congregaciones);
+        $smarty->assign('message', $message);
         $smarty->display('templates/listaSantos.tpl');
+    }
+
+    function detalleSanto($santo, $congregacion)
+    {
+
+        $smarty = new Smarty();
+        $smarty->assign('titulo', "Detalle del Santo");
+        $smarty->assign('santo', $santo);
+        $smarty->assign('congregacion', $congregacion);
+        $smarty->display('templates/detalleSanto.tpl');
 
         //VER CÓMO ACCEDER AL NOMBRE DE LA CONGREGACIÓN
 
