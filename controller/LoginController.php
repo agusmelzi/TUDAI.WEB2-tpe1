@@ -23,7 +23,7 @@ class LoginController
     {
         session_start();
         session_destroy();
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/login');
+        header(HOME); // aca
     }
 
     function formularioRegistro()
@@ -64,11 +64,13 @@ class LoginController
 
                 session_start();
                 //acá van los cambios
-                if ($dbUser['nombre'] == 'Admin') {
+                /*if ($dbUser['nombre'] == 'Admin') {
                     $_SESSION['nombre'] = 1;
                 } else {
                     $_SESSION['nombre'] = 2;
-                }
+                }*/
+                $_SESSION['nombre'] = 1;
+
 
                 header(HOME);
         } else {

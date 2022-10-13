@@ -28,6 +28,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/tpe1/congregaciones">Congregaciones</a>
                     </li>
+                    {if {$smarty.session.nombre} == 1}
+                        <li class="nav-item">
+                            <a class="nav-link">ADMIN</a>
+                        </li>
+                    {else}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tpe1/login">Login</a>
+                        </li>                        
+                    {/if}
                 </ul>
             </div>
         </div>
