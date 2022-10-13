@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<table class="table table-hover">
+<table class="table table-hover mx-5 fs-3">
     <thead>
         <tr>
             <th scope="col">Nombre</th>
@@ -11,14 +11,14 @@
             {foreach from=$santos item=santo}
                 <tr>
                     <td>
-                        <a href="detalle/{$santo['id']}">
+                        <a href="detalle/{$santo['id']}" class="link-dark">
                             {$santo['nombre']}
                         </a>
                     </td>
 
                     <td>
                         <a href="edit/{$santo['id']}">
-                            <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-link btn-lg" data-bs-toggle="modal"
                                 data-bs-target="#borrarCongregacion">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </button>
@@ -26,7 +26,7 @@
                     </td>
                     <td>
                         <a href="borrar/{$santo['id']}">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal"
                                 data-bs-target="#borrarCongregacion">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
