@@ -58,7 +58,6 @@ class CongregacionModel {
 
         $sentencia = $this->db->prepare("delete from congregacion where id=?");
         $sentencia->execute(array($id));
-        //contemplar foreing key
       }
 
 }

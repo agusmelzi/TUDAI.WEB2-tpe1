@@ -45,7 +45,6 @@ class SantoController extends SecuredController
 
         $santos = $this->model->getSantosXCategoria($categoria);
         if ($santos == null) {
-            //$santos = $this->model->getSantos();
             $this->view->showList($santos, $congregaciones , 'No hay santos de esta congregación');
         } else {
             $this->view->showList($santos, $congregaciones);
@@ -68,8 +67,16 @@ class SantoController extends SecuredController
         $fecha_muerte = $_POST['fecha_muerte'];
         $fecha_canon = $_POST['fecha_canonizacion'];
         $congregacion = $_POST['congregacion_fk'];
+        $name = $_FILES['imagen']['name'];
+        $tmp = $_FILES['imagen']['tmp_name'];
+        $type = $_FILES['imagen']['type'];
 
-        $this->model->insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
+        if ( $type == "image/jpg" || $type == "image/jpeg" || $type == "image/png") {
+            $this->model->insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name, $tmp);
+        }else{
+            $this->model->insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name);
+        }
+
 
         header(HOME);
     }
@@ -92,9 +99,20 @@ class SantoController extends SecuredController
         $fecha_muerte = $_POST['fecha_muerte'];
         $fecha_canon = $_POST['fecha_canonizacion'];
         $congregacion = $_POST['congregacion_fk'];
+        $name = $_FILES['imagen']['name'];
+        $tmp = $_FILES['imagen']['tmp_name'];
+        $type = $_FILES['imagen']['type'];
 
-        $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
-
+        if ($name != '') {
+            if ( $type == "image/jpg" || $type == "image/jpeg" || $type == "image/png") {
+                $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name, $tmp);
+            }else{
+                $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name);
+            }
+        } else {
+            $this->model->updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion);
+        }
+        
         header(HOME);
     }
 

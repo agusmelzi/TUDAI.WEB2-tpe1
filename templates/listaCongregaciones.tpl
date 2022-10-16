@@ -13,7 +13,7 @@
 
 {else}
     <form>
-        <table class="table table-dark table-striped table-hover">
+        <table class="table table-dark table-striped table-hover fs-5">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>

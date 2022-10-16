@@ -24,7 +24,7 @@ if(isset($_GET['action'])){
   if (array_key_exists($action, configApp::$ACTIONS)) {
     $params = $urlData[configApp::$PARAMS];
     $action = explode('#', configApp::$ACTIONS[$action]);
-    $controller = new $action[0]();// new SantoController() por ejemplo
+    $controller = new $action[0]();
     $metodo = $action[1];
     if (isset($params) && $params != null) {
       echo $controller->$metodo($params);

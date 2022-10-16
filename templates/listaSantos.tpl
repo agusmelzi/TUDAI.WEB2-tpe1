@@ -40,11 +40,14 @@
                 <td>
                     <p>{$message}</p>
                 </td>
-                <td>
-                    <a href="/tpe1">Mostrar todos</a>
-                </td>
             </tr>
         {/if}
+        <tr>
+            <td class="text-center py-3">
+                <a class="fs-5" href="/tpe1">Mostrar todos</a>
+            </td>
+
+        </tr>
 
     </tbody>
 </table>
@@ -61,16 +64,16 @@
     <form action="/tpe1/santosXCategoria" method="post">
         <div class="mb-3">
             <div class="text-center">
-            <label for="inputCongregacion" class="form-label fs-4">Buscar santo por congregacion</label>
+                <label for="inputCongregacion" class="form-label fs-4 fw-bold">Buscar santo por congregacion</label>
             </div>
-            <select id="inputCongregacion" class="form-select" name="congregacion_fk">
+            <select id="inputCongregacion" class="form-select fs-5" name="congregacion_fk">
                 {foreach from=$congregaciones item=congregacion}
-                    <option value="{$congregacion['id']}" class="text-center">{$congregacion['nombre']}</option>
+                    <option value="{$congregacion['id']}" class="text-center fs-5">{$congregacion['nombre']}</option>
                 {/foreach}
             </select>
 
             <div class="py-3 text-center">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-primary fs-5">Buscar</button>
             </div>
         </div>
     </form>

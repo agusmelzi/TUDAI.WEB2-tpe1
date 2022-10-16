@@ -6,54 +6,42 @@ require_once('libs/Smarty.class.php');
 class SantoView
 {
 
-
+    private $smarty;
 
     function __construct()
     {
+        $this->smarty = new Smarty();
     }
 
     function showList($santos, $congregaciones, $message = '')
     {
-        $smarty = new Smarty();
-        $smarty->assign('titulo', "Lista de santos");
-        $smarty->assign('santos', $santos);
-        $smarty->assign('congregaciones', $congregaciones);
-        $smarty->assign('message', $message);
-        $smarty->display('templates/listaSantos.tpl');
+        $this->smarty->assign('titulo', "Lista de santos");
+        $this->smarty->assign('santos', $santos);
+        $this->smarty->assign('congregaciones', $congregaciones);
+        $this->smarty->assign('message', $message);
+        $this->smarty->display('templates/listaSantos.tpl');
     }
 
     function detalleSanto($santo, $congregacion)
     {
-
-        $smarty = new Smarty();
-        $smarty->assign('titulo', "Detalle del Santo");
-        $smarty->assign('santo', $santo);
-        $smarty->assign('congregacion', $congregacion);
-        $smarty->display('templates/detalleSanto.tpl');
-
-        //VER CÓMO ACCEDER AL NOMBRE DE LA CONGREGACIÓN
-
-
+        $this->smarty->assign('titulo', "Detalle del Santo");
+        $this->smarty->assign('santo', $santo);
+        $this->smarty->assign('congregacion', $congregacion);
+        $this->smarty->display('templates/detalleSanto.tpl');
     }
 
     function addNewSaint($congregaciones)
     {
-        $smarty = new Smarty();
-        $smarty->assign('titulo', "Nuevo santo");
-        $smarty->assign('congregaciones', $congregaciones);
-        $smarty->display('templates/newSaint.tpl');
-
-        
+        $this->smarty->assign('titulo', "Nuevo santo");
+        $this->smarty->assign('congregaciones', $congregaciones);
+        $this->smarty->display('templates/newSaint.tpl');
     }
 
     function editSaint($congregaciones, $santo)
     {
-        
-        $smarty = new Smarty();
-        $smarty->assign('titulo', "Editar santo");
-        $smarty->assign('congregaciones', $congregaciones);
-        $smarty->assign('santo', $santo);
-        $smarty->display('templates/editSaint.tpl');
-        
+        $this->smarty->assign('titulo', "Editar santo");
+        $this->smarty->assign('congregaciones', $congregaciones);
+        $this->smarty->assign('santo', $santo);
+        $this->smarty->display('templates/editSaint.tpl');
     }
 }

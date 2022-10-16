@@ -32,10 +32,21 @@
                         <li class="nav-item">
                             <a class="nav-link">ADMIN</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="logout">
+                                <button class="btn btn-dark">
+                                    LogOut
+                                </button>
+                            </a>
+                        </li>
                     {else}
                         <li class="nav-item">
-                            <a class="nav-link" href="/tpe1/login">Login</a>
-                        </li>                        
+                            <a href="/tpe1/login">
+                                <button class="btn btn-dark">
+                                    Login
+                                </button>
+                            </a>
+                        </li>
                     {/if}
                 </ul>
             </div>

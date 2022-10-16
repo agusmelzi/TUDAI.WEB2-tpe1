@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 require_once 'view/LoginView.php';
 require_once 'model/UsuarioModel.php';
 
-class LoginController 
+class LoginController
 {
     private $view;
     private $model;
@@ -30,17 +30,17 @@ class LoginController
     {
         $this->view->newUser();
     }
-    
 
-    function registrarUser() 
+
+    function registrarUser()
     {
         $nombre = $_POST['nombre'];
         $pass = $_POST['pass'];
 
         $list = $this->model->showUsers();
         foreach ($list as $user) {
-            if (strcmp($nombre,$user['nombre']) == 0) {
-                 return $this->view->newUser("El usuario ingresado ya existe. Por favor, ingrese un nombre de usuario distinto");
+            if (strcmp($nombre, $user['nombre']) == 0) {
+                return $this->view->newUser("El usuario ingresado ya existe. Por favor, ingrese un nombre de usuario distinto");
             }
         }
 
@@ -48,8 +48,7 @@ class LoginController
 
         $this->model->insertUser($nombre, $hash);
 
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/login');
-
+        header("Location: http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/login');
     }
 
     function verificarLogin()
@@ -60,24 +59,13 @@ class LoginController
         $dbUser = $this->model->getUser($user);
 
         if (isset($dbUser['nombre']) && password_verify($pass, $dbUser['pass'])) {
-            //password_verify($pass, $dbUser['pass'] (lo que ingreso, lo que traigo de la db)
 
-                session_start();
-                //acá van los cambios
-                /*if ($dbUser['nombre'] == 'Admin') {
-                    $_SESSION['nombre'] = 1;
-                } else {
-                    $_SESSION['nombre'] = 2;
-                }*/
-                $_SESSION['nombre'] = 1;
+            session_start();
+            $_SESSION['nombre'] = 1;
 
-
-                header(HOME);
+            header(HOME);
         } else {
             $this->view->loginHome("Usuario o contraseña incorrecta");
         }
     }
 }
-
-
-?>

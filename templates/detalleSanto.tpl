@@ -34,5 +34,14 @@
         </table>
     </div>
 </div>
+{if {$santo['foto']} != null}
+    
+    <div class="text-center my-4">
+        
+            <img src='../{$santo['foto']}' alt="{$santo['nombre']}" class="rounded mx-auto d-block" style="width: 42rem;"/>
+        
+    </div>
+{/if}
+
 </div>
 {include file="footer.tpl"}

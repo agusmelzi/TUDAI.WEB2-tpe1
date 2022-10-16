@@ -22,7 +22,7 @@ class SantoModel
     $sentencia->execute();
 
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-  } 
+  }
 
   function getSanto($id)
   {
@@ -44,13 +44,16 @@ class SantoModel
   }
 
 
-  function insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion)
+  function insertSanto($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name, $tmp = '')
   {
+    $filePath = "image/" . uniqid("", true) . "."
+      . strtolower(pathinfo($name, PATHINFO_EXTENSION));
+    move_uploaded_file($tmp, $filePath);
 
     $sentencia = $this->db->prepare("INSERT INTO santo(
-        nombre, pais, fecha_nacimiento, fecha_muerte, fecha_canonizacion, congregacion_fk) 
-        VALUES (?,?,?,?,?,?)");
-    $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion));
+        nombre, pais, fecha_nacimiento, fecha_muerte, fecha_canonizacion, congregacion_fk, foto, fotoNombre) 
+        VALUES (?,?,?,?,?,?,?,?)");
+    $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $filePath, $name));
 
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
@@ -58,26 +61,43 @@ class SantoModel
   function editarSantos($id)
   {
 
-    if ($id == 0) {
-    }
     $sentencia = $this->db->prepare("select * from santo WHERE id=?");
     $sentencia->execute(array($id));
 
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
-  function updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion)
+  function updateSanto($id, $nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $name = '', $tmp = '')
   {
 
-    $sentencia = $this->db->prepare("UPDATE santo SET
+    if ($name = '') {
+      $sentencia = $this->db->prepare("UPDATE santo SET
         nombre = ?,
         pais = ?,
         fecha_nacimiento = ?,
         fecha_muerte = ?,
         fecha_canonizacion = ?,
-        congregacion_fk = ? 
+        congregacion_fk = ?,
         WHERE id = ?");
-    $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $id));
+      $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $id));
+    } else {
+
+      $filePath = "image/" . uniqid("", true) . "."
+        . strtolower(pathinfo($name, PATHINFO_EXTENSION));
+      move_uploaded_file($tmp, $filePath);
+
+      $sentencia = $this->db->prepare("UPDATE santo SET
+          nombre = ?,
+          pais = ?,
+          fecha_nacimiento = ?,
+          fecha_muerte = ?,
+          fecha_canonizacion = ?,
+          congregacion_fk = ?,
+          foto = ?,
+          fotoNombre = ?
+          WHERE id = ?");
+      $sentencia->execute(array($nombre, $pais, $fecha_nac, $fecha_muerte, $fecha_canon, $congregacion, $filePath, $name, $id));
+    }
   }
 
   function borrarSanto($id)
@@ -85,6 +105,5 @@ class SantoModel
 
     $sentencia = $this->db->prepare("delete from santo where id=?");
     $sentencia->execute(array($id));
-    //contemplar foreing key
   }
 }
